@@ -16,7 +16,7 @@ const Profile = () => {
         setUser(data);
         dispatch(userActions.addGetDetails(data));
       });
-  }, []);
+  }, [dispatch, userId]);
   return (
     <>
       <div className={classes.main}>
