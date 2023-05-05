@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-// import { useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 
 import { userActions } from "../store/user-slice";
@@ -8,7 +8,7 @@ import classes from "./Profile.module.css";
 const Profile = () => {
   const dispatch = useDispatch();
   const [user, setUser] = useState({});
-  // const userId = useSelector((state) => state.user.postDetails.id);
+  const userId = useSelector((state) => state.user.postDetails.id);
   useEffect(() => {
     fetch(`https://dummyjson.com/users/${localStorage.getItem("id")}`)
       .then((res) => res.json())
@@ -16,7 +16,7 @@ const Profile = () => {
         setUser(data);
         dispatch(userActions.addGetDetails(data));
       });
-  }, [dispatch]);
+  }, []);
   return (
     <>
       <div className={classes.main}>
